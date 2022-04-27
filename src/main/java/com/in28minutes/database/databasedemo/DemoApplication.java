@@ -24,7 +24,11 @@ public class DemoApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		logger.info("All users -> {}", dao.findAll());		
+		logger.info("All users -> {}", dao.findAll());
+		logger.info("User id 10001 -> {}" , dao.findById(10001));
+		logger.info("Name Camila -> {}", dao.findByName("Camila"));
+		logger.info("Location Hyderab -> {}", dao.findByLocation("Hyderab"));
+		logger.info("Deleting 10002 -> No of Rows Deleted - {}", dao.deleteById(10002));
 	}
 
 }
