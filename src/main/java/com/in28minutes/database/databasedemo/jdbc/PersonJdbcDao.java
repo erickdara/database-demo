@@ -1,5 +1,6 @@
 package com.in28minutes.database.databasedemo.jdbc;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,20 @@ public class PersonJdbcDao {
 	public Person findByLocation(String location){
 		return jdbcTemplate.queryForObject("select * from person where location=?", new Object[]{location},
 				new BeanPropertyRowMapper<Person>(Person.class));
+	}
+
+	public int insert(Person person){
+		return jdbcTemplate.update("insert into person (id,name,location, birth_date) " +
+						"VALUES(?,?,?,?)",
+				new Object[]{
+						person.getId(),person.getName(),
+						person.getLocation(),new Timestamp(person.getBirth_date().getTime())});
+	}
+
+	public int update(Person person){
+		return jdbcTemplate.update("update person set name = ?, location = ?, birth_date = ?" +
+						"where id = ?",
+				new Object[]{person.getName(), person.getLocation(),new Timestamp(person.getBirth_date().getTime()),person.getId()});
 	}
 
 }
