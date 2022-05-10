@@ -13,8 +13,8 @@ import com.in28minutes.database.databasedemo.jdbc.PersonJdbcDao;
 
 import java.util.Date;
 
-@SpringBootApplication
-public class DemoApplication implements CommandLineRunner{
+//@SpringBootApplication
+public class SpringJdbcDemoApplication implements CommandLineRunner{
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -22,7 +22,7 @@ public class DemoApplication implements CommandLineRunner{
 	PersonJdbcDao dao;
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(SpringJdbcDemoApplication.class, args);
 	}
 
 	@Override
