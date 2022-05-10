@@ -15,7 +15,7 @@ import java.util.Date;
 @SpringBootApplication
 public class JpaDemoApplication implements CommandLineRunner{
 	
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Autowired
 	PersonJpaRepository repository;
@@ -28,14 +28,15 @@ public class JpaDemoApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 
 		logger.info("User id 10001 -> {}", repository.findById(10001));
+		logger.info("Inserting 10005 -> {}", repository.insert(new Person(10005,"Erick","Colombia",new Date())));
+		logger.info("Update 10003 - {}", repository.update(new Person(10003,"Danna Valeria","Francia",new Date())));
 
 		/*logger.info("All users -> {}", repository.findAll());
 		logger.info("User id 10001 -> {}" , repository.findById(10001));
 		logger.info("Name Camila -> {}", repository.findByName("Camila"));
 		logger.info("Location Hyderab -> {}", repository.findByLocation("Hyderab"));
 		logger.info("Deleting 10002 -> No of Rows Deleted - {}", repository.deleteById(10002));
-		logger.info("Inserting 10005 -> {}", repository.insert(new Person(10005,"Erick","Colombia",new Date())));
-		logger.info("Update 10003 - {}", repository.update(new Person(10003,"Danna Valeria","Francia",new Date())));*/
+	*/
 	}
 
 }
